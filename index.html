@@ -1,0 +1,64 @@
+<script>
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get('id');
+        const container = document.getElementById('data-container');
+
+        if (!idParam) {
+            container.innerHTML = '<div class="empty-state">No Asset ID provided.</div>';
+        } else {
+            // Aggressively clean the scanned ID (remove spaces, lowercase, remove leading zeros)
+            let assetId = idParam.trim().toLowerCase().replace(/^0+/, '');
+            // If the ID was literally just "0", put it back
+            if (assetId === '') assetId = '0'; 
+
+            const databaseFiles = [
+                'database1.json', 'database2.json', 'database3.json', 'database4.json', 
+                'database5.json', 'database6.json', 'database7.json', 'database8.json', 
+                'database9.json', 'database10.json'
+            ]; 
+
+            async function findAsset() {
+                for (const file of databaseFiles) {
+                    try {
+                        const response = await fetch(file + '?v=' + new Date().getTime());
+                        if (!response.ok) continue; 
+                        
+                        const db = await response.json();
+                        
+                        // Aggressively clean the database keys to find a match
+                        const matchedKey = Object.keys(db).find(k => {
+                            let cleanDbKey = String(k).trim().toLowerCase().replace(/^0+/, '');
+                            if (cleanDbKey === '') cleanDbKey = '0';
+                            return cleanDbKey === assetId;
+                        });
+                        
+                        if (matchedKey) {
+                            const assetData = db[matchedKey];
+                            container.innerHTML = '';
+                            let addedRows = false;
+
+                            for (const [key, value] of Object.entries(assetData)) {
+                                if (value && String(value).trim() !== "") {
+                                    container.innerHTML += `<div class="data-row"><div class="label">${key}</div><div class="value">${value}</div></div>`;
+                                    addedRows = true;
+                                }
+                            }
+
+                            // If the item was found but had no data in the other columns
+                            if (!addedRows) {
+                                container.innerHTML = `<div class="empty-state">Asset found, but all data fields are empty.</div>`;
+                            }
+                            return; // Stop searching
+                        }
+                    } catch (e) { 
+                        console.log("Skipping " + file); 
+                    }
+                }
+                
+                // If not found in any database
+                container.innerHTML = `<div class="empty-state">Asset ID "<b>${idParam}</b>" not found in databases 1-10.</div>`;
+            }
+
+            findAsset();
+        }
+    </script>
