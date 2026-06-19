@@ -1,64 +1,63 @@
-<script>
-        const params = new URLSearchParams(window.location.search);
-        const idParam = params.get('id');
-        const container = document.getElementById('data-container');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Tracker</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background: #007bff; color: white; padding: 15px; border-radius: 10px 10px 0 0; text-align: center; }
+        .content { padding: 20px; }
+        .data-row { margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .label { font-size: 0.8rem; color: #666; text-transform: uppercase; }
+        .value { font-size: 1.1rem; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header"><h1>Asset Info</h1></div>
+        <div class="content" id="data-container">
+            <p>Loading...</p>
+        </div>
+    </div>
 
-        if (!idParam) {
-            container.innerHTML = '<div class="empty-state">No Asset ID provided.</div>';
-        } else {
-            // Aggressively clean the scanned ID (remove spaces, lowercase, remove leading zeros)
-            let assetId = idParam.trim().toLowerCase().replace(/^0+/, '');
-            // If the ID was literally just "0", put it back
-            if (assetId === '') assetId = '0'; 
+    <script>
+        async function loadAsset() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const container = document.getElementById('data-container');
 
-            const databaseFiles = [
-                'database1.json', 'database2.json', 'database3.json', 'database4.json', 
-                'database5.json', 'database6.json', 'database7.json', 'database8.json', 
-                'database9.json', 'database10.json'
-            ]; 
-
-            async function findAsset() {
-                for (const file of databaseFiles) {
-                    try {
-                        const response = await fetch(file + '?v=' + new Date().getTime());
-                        if (!response.ok) continue; 
-                        
-                        const db = await response.json();
-                        
-                        // Aggressively clean the database keys to find a match
-                        const matchedKey = Object.keys(db).find(k => {
-                            let cleanDbKey = String(k).trim().toLowerCase().replace(/^0+/, '');
-                            if (cleanDbKey === '') cleanDbKey = '0';
-                            return cleanDbKey === assetId;
-                        });
-                        
-                        if (matchedKey) {
-                            const assetData = db[matchedKey];
-                            container.innerHTML = '';
-                            let addedRows = false;
-
-                            for (const [key, value] of Object.entries(assetData)) {
-                                if (value && String(value).trim() !== "") {
-                                    container.innerHTML += `<div class="data-row"><div class="label">${key}</div><div class="value">${value}</div></div>`;
-                                    addedRows = true;
-                                }
-                            }
-
-                            // If the item was found but had no data in the other columns
-                            if (!addedRows) {
-                                container.innerHTML = `<div class="empty-state">Asset found, but all data fields are empty.</div>`;
-                            }
-                            return; // Stop searching
-                        }
-                    } catch (e) { 
-                        console.log("Skipping " + file); 
-                    }
-                }
-                
-                // If not found in any database
-                container.innerHTML = `<div class="empty-state">Asset ID "<b>${idParam}</b>" not found in databases 1-10.</div>`;
+            if (!id) {
+                container.innerHTML = "<p>No Asset ID found.</p>";
+                return;
             }
 
-            findAsset();
+            // We look through your 10 databases
+            const files = ['database1.json', 'database2.json', 'database3.json', 'database4.json', 'database5.json', 'database6.json', 'database7.json', 'database8.json', 'database9.json', 'database10.json'];
+            let found = false;
+
+            for (let file of files) {
+                try {
+                    const res = await fetch(file + '?v=' + Date.now());
+                    const db = await res.json();
+                    
+                    // Search for ID
+                    const key = Object.keys(db).find(k => String(k).trim().toLowerCase() === id.trim().toLowerCase().replace(/^0+/, ''));
+                    
+                    if (key) {
+                        container.innerHTML = '';
+                        for (let [k, v] of Object.entries(db[key])) {
+                            container.innerHTML += `<div class="data-row"><div class="label">${k}</div><div class="value">${v}</div></div>`;
+                        }
+                        found = true;
+                        break;
+                    }
+                } catch (e) { continue; }
+            }
+            if (!found) container.innerHTML = "<p>Asset ID not found.</p>";
         }
+        loadAsset();
     </script>
+</body>
+</html>
