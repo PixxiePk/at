@@ -1,0 +1,659 @@
+{
+    "1691": {
+        "No.": "1691",
+        "Name/Title": "Hp OMEN 16 Gaming laptop",
+        "Serial Number": "CND3490JZR",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Issued",
+        "Custody": "Allan Chumo"
+    },
+    "1692": {
+        "No.": "1692",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11511CY",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Faulty",
+        "Custody": "Makerspace"
+    },
+    "1693": {
+        "No.": "1693",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11511C4",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1694": {
+        "No.": "1694",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11510S4",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1695": {
+        "No.": "1695",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11510TD",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1696": {
+        "No.": "1696",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11523XY1",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1697": {
+        "No.": "1697",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11510Q6",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1698": {
+        "No.": "1698",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG0523ZCK",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1699": {
+        "No.": "1699",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG1150ZPR",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1700": {
+        "No.": "1700",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11511K1",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1701": {
+        "No.": "1701",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11510BZ",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Issued",
+        "Custody": "Presidential Working Party"
+    },
+    "1702": {
+        "No.": "1702",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11511JV",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1703": {
+        "No.": "1703",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG1152PHJ",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Issued",
+        "Custody": "Presidential Working Party"
+    },
+    "1704": {
+        "No.": "1704",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11514LN",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Issued",
+        "Custody": "Presidential Working Party"
+    },
+    "1705": {
+        "No.": "1705",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11516Y1",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1706": {
+        "No.": "1706",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG1151OBF",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1707": {
+        "No.": "1707",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11513ZF",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1708": {
+        "No.": "1708",
+        "Name/Title": "HP Laptop",
+        "Serial Number": "5CG11514LR",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1709": {
+        "No.": "1709",
+        "Name/Title": "Lenovo Laptop 1",
+        "Serial Number": "PF4QHEM7 - 16",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1710": {
+        "No.": "1710",
+        "Name/Title": "Lenovo Laptop 2",
+        "Serial Number": "PF4QJ36K - 25",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1711": {
+        "No.": "1711",
+        "Name/Title": "Lenovo Laptop 3",
+        "Serial Number": "PF4QG5W5 -1",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1712": {
+        "No.": "1712",
+        "Name/Title": "Lenovo Laptop 4",
+        "Serial Number": "PF4QDTPD - 20",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1713": {
+        "No.": "1713",
+        "Name/Title": "Lenovo Laptop 5",
+        "Serial Number": "PF4QCRJH - 5",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1714": {
+        "No.": "1714",
+        "Name/Title": "Lenovo Laptop 6",
+        "Serial Number": "PF4QJGLK - 23",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1715": {
+        "No.": "1715",
+        "Name/Title": "Lenovo Laptop 7",
+        "Serial Number": "PF4QJJVC - 11",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1716": {
+        "No.": "1716",
+        "Name/Title": "Lenovo Laptop 9",
+        "Serial Number": "PF4QJM4N - 18",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1717": {
+        "No.": "1717",
+        "Name/Title": "Lenovo Laptop 10",
+        "Serial Number": "PF4QJMF3 - 10",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1718": {
+        "No.": "1718",
+        "Name/Title": "Lenovo Laptop 11",
+        "Serial Number": "PF4QDTR5 - 17",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1719": {
+        "No.": "1719",
+        "Name/Title": "Lenovo Laptop 12",
+        "Serial Number": "PF4QJM4A - 24",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1720": {
+        "No.": "1720",
+        "Name/Title": "Lenovo Laptop 14",
+        "Serial Number": "PF4QCME1 - 8",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1721": {
+        "No.": "1721",
+        "Name/Title": "Lenovo Laptop 15",
+        "Serial Number": "PF4QG1MK - 4",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1722": {
+        "No.": "1722",
+        "Name/Title": "Lenovo Laptop 16",
+        "Serial Number": "PF4QDZM5 - 22",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1723": {
+        "No.": "1723",
+        "Name/Title": "Lenovo Laptop 17",
+        "Serial Number": "PF4QJMLV - 9",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1724": {
+        "No.": "1724",
+        "Name/Title": "Lenovo Laptop 18",
+        "Serial Number": "PF4QCQMS - 19",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1725": {
+        "No.": "1725",
+        "Name/Title": "Lenovo Laptop 19",
+        "Serial Number": "PF4QHET4 - 7",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1726": {
+        "No.": "1726",
+        "Name/Title": "Lenovo Laptop 20",
+        "Serial Number": "PF4QG1Y5 - 14",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1727": {
+        "No.": "1727",
+        "Name/Title": "Lenovo Laptop 21",
+        "Serial Number": "PF4QHMX1 - 21",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1728": {
+        "No.": "1728",
+        "Name/Title": "Lenovo Laptop 22",
+        "Serial Number": "PF4QCGKS - 2",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1729": {
+        "No.": "1729",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QHCTS - 3",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Issued",
+        "Custody": "Faith Muchiri/Administration"
+    },
+    "1730": {
+        "No.": "1730",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QE4Z1 -  13",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Issued",
+        "Custody": "Robert Omweri"
+    },
+    "1731": {
+        "No.": "1731",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QDV43 - 6",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1732": {
+        "No.": "1732",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QHH3E - 12",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1733": {
+        "No.": "1733",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QHMNC - 15",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1734": {
+        "No.": "1734",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QDV43 - 6",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1735": {
+        "No.": "1735",
+        "Name/Title": "Lenovo Laptop 3",
+        "Serial Number": "PF4QG5W5 -1",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1736": {
+        "No.": "1736",
+        "Name/Title": "Lenovo Laptop 22",
+        "Serial Number": "PF4QCGKS - 2",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1737": {
+        "No.": "1737",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QHCTS - 3",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Issued",
+        "Custody": "Faith Muchiri/Administration"
+    },
+    "1738": {
+        "No.": "1738",
+        "Name/Title": "Lenovo Laptop 15",
+        "Serial Number": "PF4QG1MK - 4",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1739": {
+        "No.": "1739",
+        "Name/Title": "Lenovo Laptop 5",
+        "Serial Number": "PF4QCRJH - 5",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1740": {
+        "No.": "1740",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QDV43 - 6",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1741": {
+        "No.": "1741",
+        "Name/Title": "Lenovo Laptop 19",
+        "Serial Number": "PF4QHET4 - 7",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1742": {
+        "No.": "1742",
+        "Name/Title": "Lenovo Laptop 14",
+        "Serial Number": "PF4QCME1 - 8",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1743": {
+        "No.": "1743",
+        "Name/Title": "Lenovo Laptop 17",
+        "Serial Number": "PF4QJMLV - 9",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1744": {
+        "No.": "1744",
+        "Name/Title": "Lenovo Laptop 10",
+        "Serial Number": "PF4QJMF3 - 10",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1745": {
+        "No.": "1745",
+        "Name/Title": "Lenovo Laptop 7",
+        "Serial Number": "PF4QJJVC - 11",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1746": {
+        "No.": "1746",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QHH3E - 12",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1747": {
+        "No.": "1747",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QE4Z1 -  13",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Issued",
+        "Custody": "Robert Omweri"
+    },
+    "1748": {
+        "No.": "1748",
+        "Name/Title": "Lenovo Laptop 20",
+        "Serial Number": "PF4QG1Y5 - 14",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1749": {
+        "No.": "1749",
+        "Name/Title": "Lenovo Laptop",
+        "Serial Number": "PF4QHMNC - 15",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1750": {
+        "No.": "1750",
+        "Name/Title": "Lenovo Laptop 1",
+        "Serial Number": "PF4QHEM7 - 16",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1751": {
+        "No.": "1751",
+        "Name/Title": "Lenovo Laptop 11",
+        "Serial Number": "PF4QDTR5 - 17",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1752": {
+        "No.": "1752",
+        "Name/Title": "Lenovo Laptop 9",
+        "Serial Number": "PF4QJM4N - 18",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1753": {
+        "No.": "1753",
+        "Name/Title": "Lenovo Laptop 18",
+        "Serial Number": "PF4QCQMS - 19",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1754": {
+        "No.": "1754",
+        "Name/Title": "Lenovo Laptop 4",
+        "Serial Number": "PF4QDTPD - 20",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1755": {
+        "No.": "1755",
+        "Name/Title": "Lenovo Laptop 21",
+        "Serial Number": "PF4QHMX1 - 21",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1756": {
+        "No.": "1756",
+        "Name/Title": "Lenovo Laptop 16",
+        "Serial Number": "PF4QDZM5 - 22",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1757": {
+        "No.": "1757",
+        "Name/Title": "Lenovo Laptop 6",
+        "Serial Number": "PF4QJGLK - 23",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1758": {
+        "No.": "1758",
+        "Name/Title": "Lenovo Laptop 12",
+        "Serial Number": "PF4QJM4A - 24",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1759": {
+        "No.": "1759",
+        "Name/Title": "Lenovo Laptop 2",
+        "Serial Number": "PF4QJ36K - 25",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1760": {
+        "No.": "1760",
+        "Name/Title": "Dell Laptops",
+        "Serial Number": "EX:8062190752/ST:3PC0Q74",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1761": {
+        "No.": "1761",
+        "Name/Title": "Dell Laptops",
+        "Serial Number": "EX:17578895008/ ST: 82Q0Q74",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1762": {
+        "No.": "1762",
+        "Name/Title": "Dell Laptops",
+        "Serial Number": "EX: 28516414432/ ST: D3LX074",
+        "Room Allocated": "Makerspace",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Makerspace"
+    },
+    "1763": {
+        "No.": "1763",
+        "Name/Title": "Hp Envy",
+        "Serial Number": "8CG4113F2M",
+        "Room Allocated": "Podcast Studio",
+        "Quantity": "1",
+        "Condition": "Good Order",
+        "Custody": "Podcast Studio"
+    }
+}
