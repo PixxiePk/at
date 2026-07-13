@@ -8,15 +8,27 @@
     <meta http-equiv="Expires" content="0">
     <title>Asset Tracker</title>
     <style>
-        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
-        .card { background: white; width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .header { background: #007bff; color: white; padding: 15px; border-radius: 10px 10px 0 0; text-align: center; }
+        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .card { background: white; width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: #007bff; color: white; padding: 15px; text-align: center; margin: 0; }
+        .header h1 { margin: 0; font-size: 1.5rem; }
         .content { padding: 20px; }
-        .data-row { margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .label { font-size: 0.8rem; color: #666; text-transform: uppercase; }
-        .value { font-size: 1.1rem; font-weight: bold; }
-        .empty-state { text-align: center; color: #666; font-style: italic; }
-        .debug { font-size: 0.75rem; color: #999; margin-top: 25px; text-align: center; border-top: 1px dashed #ddd; padding-top: 10px; word-break: break-all;}
+        .data-row { margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+        .data-row:last-child { border-bottom: none; }
+        .label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .value { font-size: 1rem; color: #0f172a; font-weight: 500; }
+        .empty-state { text-align: center; color: #64748b; font-style: italic; }
+        .debug { font-size: 0.75rem; color: #94a3b8; margin-top: 25px; text-align: center; border-top: 1px dashed #e2e8f0; padding-top: 10px; word-break: break-all; }
+        
+        /* Collision Modal Styles */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px; z-index: 50; }
+        .modal-card { background: white; padding: 24px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .modal-card h3 { margin-top: 0; color: #0f172a; font-size: 1.25rem; margin-bottom: 8px; }
+        .modal-card p { color: #64748b; font-size: 0.9rem; margin-bottom: 20px; margin-top: 0; }
+        .choice-btn { width: 100%; text-align: left; padding: 16px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; margin-bottom: 12px; cursor: pointer; transition: all 0.2s ease; }
+        .choice-btn:hover, .choice-btn:active { border-color: #007bff; background: #f8fafc; }
+        .choice-title { font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 1rem; }
+        .choice-desc { font-size: 0.85rem; color: #64748b; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -27,7 +39,74 @@
         </div>
     </div>
 
+    <!-- Choice Overlay Modal -->
+    <div id="choice-modal" class="modal-overlay">
+        <div class="modal-card">
+            <h3>Duplicate Tag Detected</h3>
+            <p>This ID belongs to multiple categories. Select the asset you are scanning:</p>
+            <div id="modal-choices"></div>
+        </div>
+    </div>
+
     <script>
+        // Mapping filenames to human-readable categories
+        const categoryLabels = {
+            'database3.json': '🛋️ Furniture / Accommodation',
+            'database10.json': '💻 ICT / Technical Assets'
+        };
+
+        function getCategoryName(filename) {
+            return categoryLabels[filename] || `📂 ${filename}`;
+        }
+
+        // Extracted rendering logic into a reusable function
+        function renderAsset(data, container) {
+            container.innerHTML = '';
+            let addedRows = false;
+            
+            for (let [k, v] of Object.entries(data)) {
+                if (v && String(v).trim() !== "") {
+                    container.innerHTML += `<div class="data-row"><div class="label">${k}</div><div class="value">${v}</div></div>`;
+                    addedRows = true;
+                }
+            }
+            
+            if (!addedRows) {
+                container.innerHTML = `<p class='empty-state'>Asset found, but all columns are blank.</p>`;
+            }
+        }
+
+        // Dynamic modal population based on matched duplicates
+        function showModal(matches, container) {
+            const modal = document.getElementById('choice-modal');
+            const choicesContainer = document.getElementById('modal-choices');
+            choicesContainer.innerHTML = '';
+
+            matches.forEach(match => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                
+                const title = getCategoryName(match.file);
+                const desc = match.data["Asset Description"] || "Unknown Asset";
+                const loc = match.data["Current Location"] || match.data["Original Location"] || "";
+                const context = loc ? `(${loc})` : "";
+
+                btn.innerHTML = `
+                    <div class="choice-title">${title}</div>
+                    <div class="choice-desc"><strong>${desc}</strong> ${context}</div>
+                `;
+
+                btn.onclick = () => {
+                    modal.style.display = 'none';
+                    renderAsset(match.data, container);
+                };
+
+                choicesContainer.appendChild(btn);
+            });
+
+            modal.style.display = 'flex';
+        }
+
         async function loadAsset() {
             const params = new URLSearchParams(window.location.search);
             const idParam = params.get('id');
@@ -38,10 +117,7 @@
                 return;
             }
 
-            // EXACT MATCH: Trims spaces and ignores case, but KEEPS ALL ZEROS.
             const assetId = idParam.trim().toLowerCase();
-
-            // UPDATED: Added databases 11, 12, and 13
             const files = [
                 'database1.json', 'database2.json', 'database3.json', 'database4.json', 
                 'database5.json', 'database6.json', 'database7.json', 'database8.json', 
@@ -49,9 +125,10 @@
                 'database13.json', 'database14.json', 'database15.json'
             ];
             
-            let found = false;
+            let matches = [];
             let debugInfo = `Looking for EXACT ID: "<b>${assetId}</b>"<br>`;
 
+            // Scan all files and collect ALL matches instead of breaking on the first one
             for (let file of files) {
                 try {
                     const res = await fetch(file + '?v=' + Date.now());
@@ -63,36 +140,30 @@
                     const db = await res.json();
                     debugInfo += `${file}: Loaded<br>`;
                     
-                    // ONLY look for the exact character-for-character match
                     let matchedKey = Object.keys(db).find(k => String(k).trim().toLowerCase() === assetId);
                     
                     if (matchedKey) {
-                        container.innerHTML = '';
-                        let addedRows = false;
-                        
-                        for (let [k, v] of Object.entries(db[matchedKey])) {
-                            if (v && String(v).trim() !== "") {
-                                container.innerHTML += `<div class="data-row"><div class="label">${k}</div><div class="value">${v}</div></div>`;
-                                addedRows = true;
-                            }
-                        }
-                        
-                        if (!addedRows) {
-                            container.innerHTML = `<p class='empty-state'>Asset found, but all columns are blank in the database.</p>`;
-                        }
-                        
-                        found = true;
-                        break; 
+                        matches.push({
+                            file: file,
+                            data: db[matchedKey]
+                        });
                     }
                 } catch (e) { 
                     debugInfo += `${file}: Error<br>`;
-                    continue; 
                 }
             }
             
-            if (!found) {
+            // Core Routing Logic
+            if (matches.length === 0) {
                 container.innerHTML = `<p class='empty-state'>Asset ID "<b>${idParam}</b>" not found.</p>`;
                 container.innerHTML += `<div class="debug"><b>Diagnostic Log:</b><br>${debugInfo}</div>`;
+            } else if (matches.length === 1) {
+                // Perfect hit, load it instantly
+                renderAsset(matches[0].data, container);
+            } else {
+                // Collision detected, intercept with the choice UI
+                container.innerHTML = `<p class='empty-state'>Awaiting user selection...</p>`;
+                showModal(matches, container);
             }
         }
         
