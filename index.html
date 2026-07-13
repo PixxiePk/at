@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +43,8 @@
     <!-- Choice Overlay Modal -->
     <div id="choice-modal" class="modal-overlay">
         <div class="modal-card">
-            <h3>Duplicate Tag Detected</h3>
-            <p>This ID belongs to multiple categories. Select the asset you are scanning:</p>
+            <h3>Select Asset Profile</h3>
+            <p>Multiple records share this identifier. Choose the correct physical item to proceed.</p>
             <div id="modal-choices"></div>
         </div>
     </div>
@@ -59,7 +60,6 @@
             return categoryLabels[filename] || `📂 ${filename}`;
         }
 
-        // Extracted rendering logic into a reusable function
         function renderAsset(data, container) {
             container.innerHTML = '';
             let addedRows = false;
@@ -76,7 +76,6 @@
             }
         }
 
-        // Dynamic modal population based on matched duplicates
         function showModal(matches, container) {
             const modal = document.getElementById('choice-modal');
             const choicesContainer = document.getElementById('modal-choices');
@@ -128,7 +127,6 @@
             let matches = [];
             let debugInfo = `Looking for EXACT ID: "<b>${assetId}</b>"<br>`;
 
-            // Scan all files and collect ALL matches instead of breaking on the first one
             for (let file of files) {
                 try {
                     const res = await fetch(file + '?v=' + Date.now());
@@ -153,15 +151,12 @@
                 }
             }
             
-            // Core Routing Logic
             if (matches.length === 0) {
                 container.innerHTML = `<p class='empty-state'>Asset ID "<b>${idParam}</b>" not found.</p>`;
                 container.innerHTML += `<div class="debug"><b>Diagnostic Log:</b><br>${debugInfo}</div>`;
             } else if (matches.length === 1) {
-                // Perfect hit, load it instantly
                 renderAsset(matches[0].data, container);
             } else {
-                // Collision detected, intercept with the choice UI
                 container.innerHTML = `<p class='empty-state'>Awaiting user selection...</p>`;
                 showModal(matches, container);
             }
@@ -171,3 +166,5 @@
     </script>
 </body>
 </html>
+
+```
