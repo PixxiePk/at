@@ -15,18 +15,18 @@
         .content { padding: 20px; }
         .data-row { margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
         .data-row:last-child { border-bottom: none; }
-        .label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; font-weight: bold; margin-bottom: 4px; }
         .value { font-size: 1rem; color: #0f172a; font-weight: 500; }
         .empty-state { text-align: center; color: #64748b; font-style: italic; }
         .debug { font-size: 0.75rem; color: #94a3b8; margin-top: 25px; text-align: center; border-top: 1px dashed #e2e8f0; padding-top: 10px; word-break: break-all; }
+        .error-state { color: #dc2626; font-weight: bold; text-align: center; background: #fee2e2; padding: 10px; border-radius: 6px; }
         
-        /* Collision Modal Styles */
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px; z-index: 50; }
         .modal-card { background: white; padding: 24px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
         .modal-card h3 { margin-top: 0; color: #0f172a; font-size: 1.25rem; margin-bottom: 8px; }
         .modal-card p { color: #64748b; font-size: 0.9rem; margin-bottom: 20px; margin-top: 0; }
         .choice-btn { width: 100%; text-align: left; padding: 16px; border: 2px solid #e2e8f0; border-radius: 8px; background: white; margin-bottom: 12px; cursor: pointer; transition: all 0.2s ease; }
-        .choice-btn:hover, .choice-btn:active { border-color: #007bff; background: #f8fafc; }
+        .choice-btn:hover { border-color: #007bff; background: #f8fafc; }
         .choice-title { font-weight: 700; color: #0f172a; margin-bottom: 6px; font-size: 1rem; }
         .choice-desc { font-size: 0.85rem; color: #64748b; line-height: 1.4; }
     </style>
@@ -39,7 +39,6 @@
         </div>
     </div>
 
-    <!-- Choice Overlay Modal -->
     <div id="choice-modal" class="modal-overlay">
         <div class="modal-card">
             <h3>Select Asset Profile</h3>
@@ -49,14 +48,13 @@
     </div>
 
     <script>
-        // Mapping filenames to human-readable categories
         const categoryLabels = {
             'database3.json': '🛋️ Furniture / Accommodation',
             'database10.json': '💻 ICT / Technical Assets'
         };
 
         function getCategoryName(filename) {
-            return categoryLabels[filename] || `📂 ${filename}`;
+            return categoryLabels[filename] || `📂 ${filename.replace('.json', '')}`;
         }
 
         function renderAsset(data, container) {
@@ -70,9 +68,7 @@
                 }
             }
             
-            if (!addedRows) {
-                container.innerHTML = `<p class='empty-state'>Asset found, but all columns are blank.</p>`;
-            }
+            if (!addedRows) container.innerHTML = `<p class='empty-state'>Asset found, but all columns are blank.</p>`;
         }
 
         function showModal(matches, container) {
@@ -106,58 +102,69 @@
         }
 
         async function loadAsset() {
-            const params = new URLSearchParams(window.location.search);
-            const idParam = params.get('id');
             const container = document.getElementById('data-container');
-
-            if (!idParam) {
-                container.innerHTML = "<p class='empty-state'>No Asset ID found in the link.</p>";
-                return;
-            }
-
-            const assetId = idParam.trim().toLowerCase();
-            const files = [
-                'database1.json', 'database2.json', 'database3.json', 'database4.json', 
-                'database5.json', 'database6.json', 'database7.json', 'database8.json', 
-                'database9.json', 'database10.json', 'database11.json', 'database12.json',
-                'database13.json', 'database14.json', 'database15.json' 'database16.json'
-            ];
             
-            let matches = [];
-            let debugInfo = `Looking for EXACT ID: "<b>${assetId}</b>"<br>`;
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const idParam = params.get('id');
 
-            for (let file of files) {
-                try {
-                    const res = await fetch(file + '?v=' + Date.now());
-                    if (!res.ok) {
-                        debugInfo += `${file}: Missing<br>`;
+                if (!idParam) {
+                    container.innerHTML = "<p class='empty-state'>No Asset ID found in the link.</p>";
+                    return;
+                }
+
+                const assetId = idParam.trim().toLowerCase();
+                const files = [
+                    'database1.json', 'database2.json', 'database3.json', 'database4.json', 
+                    'database5.json', 'database6.json', 'database7.json', 'database8.json', 
+                    'database9.json', 'database10.json', 'database11.json', 'database12.json',
+                    'database13.json', 'database14.json', 'database15.json', 'database16.json'
+                ];
+                
+                let matches = [];
+                let debugInfo = `Looking for: "<b>${assetId}</b>"<br>`;
+
+                // Parallel fetch with error shielding
+                const fetchPromises = files.map(file => 
+                    fetch(file + '?v=' + Date.now())
+                        .then(res => {
+                            if (!res.ok) throw new Error('HTTP ' + res.status);
+                            return res.json().then(data => ({ file, data, success: true }));
+                        })
+                        .catch(err => ({ file, success: false, error: err.message }))
+                );
+
+                const results = await Promise.all(fetchPromises);
+
+                for (let result of results) {
+                    if (!result.success) {
+                        debugInfo += `<span style="color:red">${result.file}: Failed (${result.error})</span><br>`;
                         continue;
                     }
                     
-                    const db = await res.json();
-                    debugInfo += `${file}: Loaded<br>`;
+                    debugInfo += `<span style="color:green">${result.file}: OK</span><br>`;
                     
-                    let matchedKey = Object.keys(db).find(k => String(k).trim().toLowerCase() === assetId);
-                    
-                    if (matchedKey) {
-                        matches.push({
-                            file: file,
-                            data: db[matchedKey]
-                        });
+                    if (result.data && typeof result.data === 'object') {
+                        let matchedKey = Object.keys(result.data).find(k => String(k).trim().toLowerCase() === assetId);
+                        if (matchedKey) {
+                            matches.push({ file: result.file, data: result.data[matchedKey] });
+                        }
                     }
-                } catch (e) { 
-                    debugInfo += `${file}: Error<br>`;
                 }
-            }
-            
-            if (matches.length === 0) {
-                container.innerHTML = `<p class='empty-state'>Asset ID "<b>${idParam}</b>" not found.</p>`;
-                container.innerHTML += `<div class="debug"><b>Diagnostic Log:</b><br>${debugInfo}</div>`;
-            } else if (matches.length === 1) {
-                renderAsset(matches[0].data, container);
-            } else {
-                container.innerHTML = `<p class='empty-state'>Awaiting user selection...</p>`;
-                showModal(matches, container);
+                
+                if (matches.length === 0) {
+                    container.innerHTML = `<p class='empty-state'>Asset ID "<b>${idParam}</b>" not found.</p>`;
+                    container.innerHTML += `<div class="debug"><b>Diagnostic Log:</b><br>${debugInfo}</div>`;
+                } else if (matches.length === 1) {
+                    renderAsset(matches[0].data, container);
+                } else {
+                    container.innerHTML = `<p class='empty-state'>Awaiting user selection...</p>`;
+                    showModal(matches, container);
+                }
+
+            } catch (error) {
+                // If the entire script crashes, display it here
+                container.innerHTML = `<div class="error-state">System Error: ${error.message}</div>`;
             }
         }
         
